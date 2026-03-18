@@ -7,6 +7,8 @@ A **Research-Grade** Multi-Modal AI System for semantic skill gap analysis — p
 
 ## 🧠 System Architecture
 
+![MoSSGA Methodology and Architecture](assets/mossga_methodology.png)
+
 ```
 User Interface
   Upload Resume | Enter GitHub | Input Job Role / JD
