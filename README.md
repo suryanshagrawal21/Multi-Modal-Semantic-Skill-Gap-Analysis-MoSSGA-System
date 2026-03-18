@@ -1,46 +1,64 @@
 
 # Multi-Modal Semantic Skill Gap Analysis (MoSSGA) System
 
-A **Research-Grade** Multi-Modal AI System for intelligent resume screening, GitHub profile analysis, semantic skill matching, and personalized career intelligence — powered by **Sentence-BERT**, **Reinforcement Learning**, and **Multi-Modal Fusion**.
+A **Research-Grade** Multi-Modal AI System for semantic skill gap analysis — powered by **Sentence-BERT**, **Multi-Modal Fusion**, and an **Intelligent Recommendation Engine**.
 
-![System Architecture](https://img.shields.io/badge/AI-SBERT%20%2B%20RL%20%2B%20MoSSGA-blue) ![License](https://img.shields.io/badge/License-MIT-green) ![Python](https://img.shields.io/badge/Python-3.10%2B-yellow)
+![System Architecture](https://img.shields.io/badge/AI-SBERT%20%2B%20Multi--Modal%20Fusion-blue) ![License](https://img.shields.io/badge/License-MIT-green) ![Python](https://img.shields.io/badge/Python-3.10%2B-yellow)
 
 ## 🧠 System Architecture
 
 ```
-Input Layer                     Feature Extraction           Intelligence Engine
-┌───────────────┐              ┌──────────────────┐         ┌──────────────────────┐
-│ Resume (PDF)  │──┐           │ Skills            │         │ Semantic Embedding   │
-│ GitHub Profile│──┼──► NLP ──►│ Experience        │──► Fusion ──► (Sentence-BERT) │
-│ Job Desc      │──┘  Parsing  │ Projects          │         │ Skill Gap Detection  │
-└───────────────┘              └──────────────────┘         │ Recommendation Engine│
-                                                            └──────────┬───────────┘
-                                                                       │
-                                                            ┌──────────▼───────────┐
-                                                            │   Output Dashboard   │
-                                                            │  (Streamlit - 10 Tabs)│
-                                                            └──────────────────────┘
+User Interface
+  Upload Resume | Enter GitHub | Input Job Role / JD
+          │
+  ┌───────▼──────────────────────────────────────────────┐
+  │     MULTI-MODAL DATA ACQUISITION LAYER               │
+  │  Resume (PDF/Text)  │  GitHub (API)  │  JD (Skills)  │
+  └───────┬─────────────┴────────┬───────┴───────┬───────┘
+          │                      │               │
+  ┌───────▼──────────┐           │     ┌─────────▼────────────┐
+  │ DATA PREPROCESSING│           │     │ SIMILARITY & MATCHING│
+  │ - Text Cleaning   │           │     │ - Cosine Similarity  │
+  │ - Tokenization    │           │     │ - Skill Match Score  │
+  │ - Normalization   │           │     └─────────┬────────────┘
+  └───────┬──────────┘           │               │
+          │                      │     ┌─────────▼────────────┐
+  ┌───────▼──────────────────┐   │     │ SKILL GAP ANALYSIS   │
+  │ MULTI-MODAL FEATURE      │   │     │ (CORE NOVELTY)       │
+  │ EXTRACTION MODULE        │   │     │ - Missing Skills      │
+  │ Resume → Skills, Exp,    │   │     │ - Weak/Partial Skills │
+  │          Projects        │   │     │ - Language Usage       │
+  │ GitHub → Languages,      │   │     │ - Activity Check      │
+  │          Commits,        │   │     └─────────┬────────────┘
+  │          Repo Complexity │   │               │
+  │ JD → Required Skills     │   │     ┌─────────▼────────────┐
+  └───────┬──────────────────┘   │     │ INTELLIGENT          │
+          │                      │     │ RECOMMENDATION ENGINE │
+  ┌───────▼──────────────────┐   │     │ - Skill Improvement   │
+  │ SEMANTIC REPRESENTATION  │   │     │ - Course/Project Recs │
+  │ LAYER (TRANSFORMERS)     │   │     │ - Career Path Guidance│
+  │ - Sentence-BERT / BERT   │   │     └─────────┬────────────┘
+  │ - Contextual Embeddings  │   │               │
+  │ - Skill Normalization    │   │     ┌─────────▼────────────┐
+  │   (ML ≈ Machine Learning)│   │     │ OUTPUT VISUALIZATION │
+  └───────┬──────────────────┘   │     │ - Match Score (%)     │
+          │                      │     │ - Matched Skills      │
+  ┌───────▼──────────────────┐   │     │ - Missing Skills      │
+  │ VECTOR SPACE MODEL &     │───┘     │ - Recommendations     │
+  │ SKILL MAPPING            │         └──────────────────────┘
+  │ - Candidate Vector Space │
+  │ - Skill Matching Score   │
+  └──────────────────────────┘
 ```
 
 ## 🚀 Key Features
 
 ### MoSSGA — Multi-Modal Semantic Skill Gap Analysis
-- **GitHub Profile Analysis**: Fetches repos via GitHub API, extracts languages, technologies, and project complexity scores.
-- **Semantic Skill Matching**: SBERT-powered matching recognizes "ML" ≈ "Machine Learning", "JS" ≈ "JavaScript" — not just keywords.
-- **Multi-Modal Fusion**: Combines resume + GitHub data with confidence scoring. Skills validated by both sources get highest confidence.
-- **Skill Gap Detection**: Identifies missing skills with severity levels (Critical → Nice-to-have) and generates course recommendations.
-
-### NeuroHire — AI Career Intelligence
-- **Multi-Objective RJAS Score**: Balances predictive accuracy with algorithmic fairness.
-  $$ RJAS = \alpha \cdot (SBERT + Skills + Exp + Edu) + (1 - \alpha) \cdot (1 - P_{bias}) $$
-- **Cognitive Skill Graph**: Maps skill dependencies and predicts next-best skills to learn.
-- **Career Trajectory Prediction**: ML-based career path modeling with timeline milestones.
-- **Skill Authenticity Detection**: Validates resume claims against evidence patterns.
-
-### Research Lab & RL Agent
-- **Reinforcement Learning Ranking**: Contextual Bandit adapts scoring weights from recruiter feedback.
-- **Statistical Validation**: Paired T-Tests, Pareto frontier analysis (Accuracy vs Fairness).
-- **Explainable AI (XAI)**: Factor-by-factor deep reasoning for every score.
+- **Multi-Modal Data Acquisition**: Accepts resumes (PDF/DOCX), GitHub profiles (API), and job descriptions
+- **Semantic Skill Matching**: SBERT-powered matching recognizes "ML" ≈ "Machine Learning", "JS" ≈ "JavaScript" — not just keywords
+- **Multi-Modal Fusion**: Combines resume + GitHub data with confidence scoring. Skills validated by both sources get highest confidence
+- **Skill Gap Detection**: Identifies missing and weak skills with severity levels (Critical → Nice-to-have)
+- **Intelligent Recommendations**: Generates personalized course recommendations, skill improvement suggestions, and career path guidance
 
 ## 🛠️ Installation
 
@@ -66,40 +84,30 @@ Input Layer                     Feature Extraction           Intelligence Engine
 1. **Upload Resumes**: Drag & drop PDF/DOCX files in the sidebar.
 2. **Enter GitHub Profile**: Paste a GitHub URL or username.
 3. **Set Job Description**: Paste the JD text.
-4. **Run Analysis**: Click "🚀 Run MoSSGA + NeuroHire Analysis".
-5. **Explore 10 Tabs**:
+4. **Run Analysis**: Click "🚀 Run MoSSGA Analysis".
+5. **Explore 5 Tabs**:
    | Tab | Description |
    |-----|-------------|
-   | 🧠 NeuroHire Insights | Full candidate analysis with strengths, weaknesses, roadmap |
+   | 📊 Analysis Results | Skills detected, match scores, extracted resume sections |
    | 🐙 GitHub Analysis | Repository languages, technologies, project complexity |
    | 🔀 Multi-Modal Fusion | Resume vs GitHub skill comparison with confidence scores |
-   | 🎯 MoSSGA Skill Gap | Semantic matching heatmap, missing skills, course recommendations |
-   | 🕸️ Cognitive Skill Graph | Interactive skill dependency network |
-   | 📈 Career Trajectory | ML-predicted career path with readiness scores |
-   | 📊 RJAS Ranking | Multi-resume ranking with composite scores |
-   | 📢 Explainability (XAI) | Factor-by-factor score reasoning with radar charts |
-   | 🧪 Research Lab | Algorithm comparison, statistical validation, Pareto frontier |
-   | 🔄 RL Feedback | Teach the AI by hiring/rejecting candidates |
+   | 🎯 MoSSGA Skill Gap | Semantic matching heatmap, missing skills with severity |
+   | 📋 Recommendations | Skill improvement suggestions, courses, career guidance |
 
 ## 📂 Project Structure
 
 ```
-├── app.py                          # Main Streamlit Dashboard (10 tabs)
+├── app.py                          # Main Streamlit Dashboard (5 tabs)
 ├── src/
-│   ├── github_analyzer.py          # GitHub API integration & skill extraction
-│   ├── semantic_skill_matcher.py   # SBERT semantic skill matching engine
-│   ├── multimodal_fusion.py        # Resume + GitHub data fusion
-│   ├── mossga_engine.py            # MoSSGA orchestrator pipeline
 │   ├── parser.py                   # PDF/DOCX text extraction
 │   ├── preprocessing.py            # NLP text cleaning, skill extraction (70+ skills)
 │   ├── matcher.py                  # TF-IDF & SBERT similarity
-│   ├── scoring.py                  # RJAS composite scoring
-│   ├── rjas_metric.py              # Multi-objective RJAS formula
-│   ├── adaptive_engine.py          # RL Contextual Bandit agent
-│   ├── career_intelligence.py      # Career guidance & recommendations
-│   ├── cognitive_engine.py         # Skill graph, trajectory, authenticity
-│   ├── research_lab.py             # Statistical tests & Pareto analysis
-│   └── experiment.py               # Comparative experiment runner
+│   ├── semantic_skill_matcher.py   # SBERT semantic skill matching engine
+│   ├── github_analyzer.py          # GitHub API integration & skill extraction
+│   ├── multimodal_fusion.py        # Resume + GitHub data fusion
+│   ├── mossga_engine.py            # MoSSGA orchestrator pipeline
+│   └── career_intelligence.py      # Intelligent recommendation engine
+├── verify_mossga.py                # Pipeline verification test
 ├── requirements.txt
 └── README.md
 ```
@@ -107,11 +115,8 @@ Input Layer                     Feature Extraction           Intelligence Engine
 ## ✅ Verification
 
 ```bash
-# Verify RJAS & RL Agent
-python verify_framework.py
-
-# Verify Research Components
-python verify_research.py
+# Verify MoSSGA pipeline (semantic matching + fusion + gap analysis)
+python verify_mossga.py
 ```
 
 ## 🔬 Technologies Used
@@ -119,11 +124,10 @@ python verify_research.py
 | Category | Technologies |
 |----------|-------------|
 | **NLP** | SpaCy, Sentence-BERT (all-MiniLM-L6-v2), TF-IDF |
-| **ML** | Scikit-learn, NumPy, SciPy |
-| **Visualization** | Plotly, Streamlit, NetworkX |
+| **ML** | Scikit-learn, NumPy |
+| **Visualization** | Plotly, Streamlit |
 | **Data** | Pandas, PDFMiner, python-docx |
 | **API** | GitHub REST API v3 |
-| **Fairness** | Bias-aware scoring, Pareto optimization |
 
 ---
 *Developed by Suryansh Agrawal*
