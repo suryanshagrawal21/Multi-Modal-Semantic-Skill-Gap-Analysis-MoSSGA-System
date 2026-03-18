@@ -1,92 +1,129 @@
 
-# Intelligent AI Resume Screening System
+# Multi-Modal Semantic Skill Gap Analysis (MoSSGA) System
 
-A **Research-Grade** Multi-Objective Resume Screening Framework powered by **SBERT (Sentence-BERT)**, **Reinforcement Learning (RL)**, and **Bias-Aware Fairness Constraints**.
+A **Research-Grade** Multi-Modal AI System for intelligent resume screening, GitHub profile analysis, semantic skill matching, and personalized career intelligence — powered by **Sentence-BERT**, **Reinforcement Learning**, and **Multi-Modal Fusion**.
 
-![System Architecture](https://img.shields.io/badge/AI-SBERT%20%2B%20RL-blue) ![License](https://img.shields.io/badge/License-MIT-green)
+![System Architecture](https://img.shields.io/badge/AI-SBERT%20%2B%20RL%20%2B%20MoSSGA-blue) ![License](https://img.shields.io/badge/License-MIT-green) ![Python](https://img.shields.io/badge/Python-3.10%2B-yellow)
+
+## 🧠 System Architecture
+
+```
+Input Layer                     Feature Extraction           Intelligence Engine
+┌───────────────┐              ┌──────────────────┐         ┌──────────────────────┐
+│ Resume (PDF)  │──┐           │ Skills            │         │ Semantic Embedding   │
+│ GitHub Profile│──┼──► NLP ──►│ Experience        │──► Fusion ──► (Sentence-BERT) │
+│ Job Desc      │──┘  Parsing  │ Projects          │         │ Skill Gap Detection  │
+└───────────────┘              └──────────────────┘         │ Recommendation Engine│
+                                                            └──────────┬───────────┘
+                                                                       │
+                                                            ┌──────────▼───────────┐
+                                                            │   Output Dashboard   │
+                                                            │  (Streamlit - 10 Tabs)│
+                                                            └──────────────────────┘
+```
 
 ## 🚀 Key Features
 
-### 1. Multi-Objective Resume-Job Alignment Score (RJAS)
-A novel scoring metric that balances predictive accuracy with algorithmic fairness.
-$$ RJAS = \alpha \cdot (SBERT + Skills + Exp + Edu) + (1 - \alpha) \cdot (1 - P_{bias}) $$
-- **Semantic Matching**: Uses `all-MiniLM-L6-v2` for deep contextual understanding.
-- **Fairness Penalty**: Penalizes detection of sensitive entities (Name, Gender, Age) to encourage blind screening.
+### MoSSGA — Multi-Modal Semantic Skill Gap Analysis
+- **GitHub Profile Analysis**: Fetches repos via GitHub API, extracts languages, technologies, and project complexity scores.
+- **Semantic Skill Matching**: SBERT-powered matching recognizes "ML" ≈ "Machine Learning", "JS" ≈ "JavaScript" — not just keywords.
+- **Multi-Modal Fusion**: Combines resume + GitHub data with confidence scoring. Skills validated by both sources get highest confidence.
+- **Skill Gap Detection**: Identifies missing skills with severity levels (Critical → Nice-to-have) and generates course recommendations.
 
-### 2. Reinforcement Learning (RL) Ranking Agent
-- **Contextual Bandit Algorithm**: Adapts ranking criteria based on *Human-in-the-Loop* feedback.
-- **Dynamic Weighting**: Automatically learns that "Developers" need more *Skills* while "Managers" need more *Experience*.
-- **Convergence Simulation**: Includes a built-in simulator to visualize the agent's learning curve.
+### NeuroHire — AI Career Intelligence
+- **Multi-Objective RJAS Score**: Balances predictive accuracy with algorithmic fairness.
+  $$ RJAS = \alpha \cdot (SBERT + Skills + Exp + Edu) + (1 - \alpha) \cdot (1 - P_{bias}) $$
+- **Cognitive Skill Graph**: Maps skill dependencies and predicts next-best skills to learn.
+- **Career Trajectory Prediction**: ML-based career path modeling with timeline milestones.
+- **Skill Authenticity Detection**: Validates resume claims against evidence patterns.
 
-### 3. Research Lab & Explainability
-- **Statistical Validation**: Automated Paired T-Tests (RJAS vs TF-IDF) with P-value reporting.
-- **Pareto Frontier Analysis**: Visualizes the trade-off between Accuracy and Fairness.
-- **Cognitive Explainability**: Natural language generation explaining *why* a candidate was ranked high/low.
+### Research Lab & RL Agent
+- **Reinforcement Learning Ranking**: Contextual Bandit adapts scoring weights from recruiter feedback.
+- **Statistical Validation**: Paired T-Tests, Pareto frontier analysis (Accuracy vs Fairness).
+- **Explainable AI (XAI)**: Factor-by-factor deep reasoning for every score.
 
 ## 🛠️ Installation
 
-1.  **Clone the Repository**:
+1. **Clone the Repository**:
     ```bash
     git clone https://github.com/suryanshagrawal21/Intelligent_AI_Resume_Screening_System.git
     cd Intelligent_AI_Resume_Screening_System
     ```
 
-2.  **Install Dependencies**:
+2. **Install Dependencies**:
     ```bash
     pip install -r requirements.txt
     python -m spacy download en_core_web_sm
     ```
 
-3.  **Run the Application**:
+3. **Run the Application**:
     ```bash
     streamlit run app.py
     ```
 
 ## 📊 Usage Guide
 
-1.  **Upload Resumes**: Drag & drop PDF/DOCX files in the sidebar.
-2.  **Set Job Description**: Paste the JD text.
-3.  **Run Experiment**: Click "Run Adaptive Experiment".
-4.  **Explore Tabs**:
-    - **Intelligent Ranking**: View candidates sorted by RJAS.
-    - **Research Lab**: Check statistical significance and Pareto plots.
-    - **Explainability**: See radar charts and justifications.
-    - **RL Feedback Loop**: Teach the AI by "Hiring" candidates.
-
-## 🔬 Reproducibility
-
-To reproduce the RL convergence results reported in our research:
-- **Seed**: `random.seed(42)`
-- **Simulation**: Run `verify_research.py` or use the "Run Simulation" button in the app.
-- **Dataset**: Synthetic stream of 100 candidates (generated by simulator).
+1. **Upload Resumes**: Drag & drop PDF/DOCX files in the sidebar.
+2. **Enter GitHub Profile**: Paste a GitHub URL or username.
+3. **Set Job Description**: Paste the JD text.
+4. **Run Analysis**: Click "🚀 Run MoSSGA + NeuroHire Analysis".
+5. **Explore 10 Tabs**:
+   | Tab | Description |
+   |-----|-------------|
+   | 🧠 NeuroHire Insights | Full candidate analysis with strengths, weaknesses, roadmap |
+   | 🐙 GitHub Analysis | Repository languages, technologies, project complexity |
+   | 🔀 Multi-Modal Fusion | Resume vs GitHub skill comparison with confidence scores |
+   | 🎯 MoSSGA Skill Gap | Semantic matching heatmap, missing skills, course recommendations |
+   | 🕸️ Cognitive Skill Graph | Interactive skill dependency network |
+   | 📈 Career Trajectory | ML-predicted career path with readiness scores |
+   | 📊 RJAS Ranking | Multi-resume ranking with composite scores |
+   | 📢 Explainability (XAI) | Factor-by-factor score reasoning with radar charts |
+   | 🧪 Research Lab | Algorithm comparison, statistical validation, Pareto frontier |
+   | 🔄 RL Feedback | Teach the AI by hiring/rejecting candidates |
 
 ## 📂 Project Structure
 
-- `app.py`: Main Streamlit Dashboard.
-- `src/`: Core logic modules.
-  - `rjas_metric.py`: Mathematical formulation of RJAS.
-  - `adaptive_engine.py`: RL Contextual Bandit implementation.
-  - `research_lab.py`: Statistical tests and Pareto analysis.
-- `verify_research.py`: automated validation script.
+```
+├── app.py                          # Main Streamlit Dashboard (10 tabs)
+├── src/
+│   ├── github_analyzer.py          # GitHub API integration & skill extraction
+│   ├── semantic_skill_matcher.py   # SBERT semantic skill matching engine
+│   ├── multimodal_fusion.py        # Resume + GitHub data fusion
+│   ├── mossga_engine.py            # MoSSGA orchestrator pipeline
+│   ├── parser.py                   # PDF/DOCX text extraction
+│   ├── preprocessing.py            # NLP text cleaning, skill extraction (70+ skills)
+│   ├── matcher.py                  # TF-IDF & SBERT similarity
+│   ├── scoring.py                  # RJAS composite scoring
+│   ├── rjas_metric.py              # Multi-objective RJAS formula
+│   ├── adaptive_engine.py          # RL Contextual Bandit agent
+│   ├── career_intelligence.py      # Career guidance & recommendations
+│   ├── cognitive_engine.py         # Skill graph, trajectory, authenticity
+│   ├── research_lab.py             # Statistical tests & Pareto analysis
+│   └── experiment.py               # Comparative experiment runner
+├── requirements.txt
+└── README.md
+```
 
 ## ✅ Verification
 
-To verify the core logic and research components without launching the full UI:
+```bash
+# Verify RJAS & RL Agent
+python verify_framework.py
 
-1.  **Test RJAS & RL Agent**:
-    ```bash
-    python verify_framework.py
-    ```
-    *Expected Output: `✅ Multi-Objective RJAS Test Passed`, `✅ RL Agent Test Passed`*
+# Verify Research Components
+python verify_research.py
+```
 
-2.  **Test Statistical Analysis**:
-    ```bash
-    python verify_research.py
-    ```
-    *Expected Output: `✅ Statistics Module Verified`, `✅ RL Convergence Verified`*
+## 🔬 Technologies Used
 
-## 🤝 Contributing
-Contributions are welcome! Please submit a Pull Request.
+| Category | Technologies |
+|----------|-------------|
+| **NLP** | SpaCy, Sentence-BERT (all-MiniLM-L6-v2), TF-IDF |
+| **ML** | Scikit-learn, NumPy, SciPy |
+| **Visualization** | Plotly, Streamlit, NetworkX |
+| **Data** | Pandas, PDFMiner, python-docx |
+| **API** | GitHub REST API v3 |
+| **Fairness** | Bias-aware scoring, Pareto optimization |
 
 ---
 *Developed by Suryansh Agrawal*

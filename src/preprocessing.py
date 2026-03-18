@@ -49,15 +49,41 @@ def preprocess_text(text):
 
 # Curated list of common tech and soft skills for keyword matching
 COMMON_SKILLS = {
-    "python", "java", "c++", "c#", "javascript", "typescript", "html", "css",
+    # Programming languages
+    "python", "java", "c++", "c#", "c", "javascript", "typescript", "html", "css",
+    "go", "rust", "ruby", "php", "swift", "kotlin", "scala", "r", "dart",
+    # Web frameworks
     "react", "angular", "vue", "node.js", "express", "django", "flask", "fastapi",
-    "sql", "mysql", "postgresql", "mongodb",
+    "next.js", "spring boot", "tailwind css",
+    # Databases
+    "sql", "mysql", "postgresql", "mongodb", "redis", "nosql", "graphql",
+    # Cloud & DevOps
     "aws", "azure", "gcp", "docker", "kubernetes", "git", "linux",
-    "machine learning", "deep learning", "nlp",
+    "ci/cd", "terraform", "github actions", "jenkins",
+    # Data & ML
+    "machine learning", "deep learning", "nlp", "computer vision", "data science",
     "tensorflow", "pytorch", "keras", "scikit-learn",
     "pandas", "numpy", "matplotlib", "seaborn", "tableau",
-    "power bi", "excel",
+    "power bi", "excel", "data visualization", "statistics",
+    # Big data
+    "spark", "hadoop", "airflow", "dbt", "kafka",
+    # Mobile
+    "android", "ios", "flutter", "react native",
+    # Testing & tools
+    "selenium", "testing", "rest apis", "microservices", "system design",
+    # Soft skills
     "communication", "teamwork", "leadership", "agile", "scrum", "project management",
+}
+
+# Maps abbreviations and synonyms to canonical skill names
+SKILL_ALIASES = {
+    "js": "javascript", "ts": "typescript", "py": "python",
+    "ml": "machine learning", "dl": "deep learning", "ai": "artificial intelligence",
+    "cpp": "c++", "csharp": "c#", "golang": "go",
+    "k8s": "kubernetes", "tf": "tensorflow", "sklearn": "scikit-learn",
+    "reactjs": "react", "nodejs": "node.js", "expressjs": "express",
+    "postgres": "postgresql", "mongo": "mongodb",
+    "natural language processing": "nlp", "cv": "computer vision",
 }
 
 

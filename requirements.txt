@@ -11,3 +11,5 @@ sentence-transformers
 textstat
 scipy
 numpy
+requests
+networkx
