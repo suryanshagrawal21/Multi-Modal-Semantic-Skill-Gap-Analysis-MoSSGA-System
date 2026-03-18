@@ -215,6 +215,26 @@ st.markdown("""
         transform: translateY(-1px);
         box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
     }
+
+    /* Input fields glassmorphism enhancements */
+    .stTextInput input, .stTextArea textarea, [data-testid="stFileUploaderDropzone"] {
+        background: rgba(30, 41, 59, 0.5) !important;
+        border: 1px solid rgba(99, 102, 241, 0.25) !important;
+        border-radius: 10px !important;
+        color: #f8fafc !important;
+        transition: all 0.3s ease !important;
+    }
+    .stTextInput input:focus, .stTextArea textarea:focus, [data-testid="stFileUploaderDropzone"]:hover {
+        background: rgba(15, 23, 42, 0.8) !important;
+        border-color: rgba(139, 92, 246, 0.8) !important;
+        box-shadow: 0 0 16px rgba(139, 92, 246, 0.3) !important;
+    }
+    
+    /* Enhance the label text under inputs */
+    .stTextInput label, .stTextArea label, [data-testid="stFileUploaderDropzone"] label {
+        color: #94a3b8 !important;
+        font-weight: 500 !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
