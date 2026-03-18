@@ -238,13 +238,19 @@ st.markdown("""
 
 
 # ---------------------------------------------------------------------------
-# Sidebar
+# MoSSGA Hero Input Engine
 # ---------------------------------------------------------------------------
 
-with st.sidebar:
-    st.markdown("## 📋 Input Panel")
+st.markdown("""
+<div class="glass-card" style="text-align: center; margin-bottom: 2rem;">
+    <h2>Elevate Your Career Intelligence</h2>
+    <p style="color: #94a3b8; font-size: 1.1rem;">Provide your multi-modal profile data to uncover deep semantic skill gaps and career progression steps.</p>
+</div>
+""", unsafe_allow_html=True)
 
-    st.markdown("---")
+col1, col2, col3 = st.columns(3)
+
+with col1:
     st.markdown("### 📄 Resume Upload")
     uploaded_files = st.file_uploader(
         "Upload PDF / DOCX resumes", type=["pdf", "docx"], accept_multiple_files=True,
@@ -253,35 +259,49 @@ with st.sidebar:
     if uploaded_files:
         st.success(f"✅ {len(uploaded_files)} resume(s) loaded")
 
-    st.markdown("---")
+with col2:
     st.markdown("### 🐙 GitHub Profile")
     github_input = st.text_input(
         "GitHub URL or Username",
-        placeholder="e.g. https://github.com/username or just username",
+        placeholder="e.g. https://github.com/username or just username"
     )
     if github_input:
         st.success("✅ GitHub profile will be analyzed")
 
-    st.markdown("---")
+with col3:
     st.markdown("### 🎯 Target Profile")
     target_role = st.text_input("Target Role", placeholder="e.g. Data Scientist, Web Developer")
-    manual_skills = st.text_area(
+    manual_skills = st.text_input(
         "Your Skills (comma separated)",
-        placeholder="e.g. Python, SQL, React, Machine Learning",
-        height=80,
+        placeholder="e.g. Python, SQL, React"
     )
 
-    st.markdown("---")
-    st.markdown("### 📌 Job Description")
-    jd_input = st.text_area("Paste Job Description here", height=120, label_visibility="collapsed",
-                            placeholder="Paste a job description to get semantic matching...")
+st.markdown("---")
+st.markdown("<h3 style='text-align: center;'>📌 Job Description Analysis</h3>", unsafe_allow_html=True)
+jd_input = st.text_area(
+    "Paste Target Job Description here", 
+    height=150, 
+    placeholder="Paste a job description to get deep semantic skill gap matching... (Optional but highly recommended)",
+    label_visibility="collapsed"
+)
 
-    st.markdown("---")
-    st.markdown("### ⚙️ Configuration")
-    use_sbert = st.checkbox("Use Deep Semantic (SBERT)", value=True)
-
-    st.markdown("---")
-    run_btn = st.button("🚀 Run MoSSGA Analysis", use_container_width=True, type="primary")
+st.markdown("---")
+col_cfg1, col_cfg2, col_cfg3 = st.columns([1, 2, 1])
+with col_cfg2:
+    use_sbert = st.checkbox("Use Deep Semantic (SBERT) for advanced pattern matching", value=True)
+    st.markdown(
+        """
+        <style>
+        div.stButton > button {
+            transform: scale(1.02);
+            font-size: 1.25rem;
+            padding: 0.8rem 2rem;
+            margin-top: 10px;
+        }
+        </style>
+        """, unsafe_allow_html=True
+    )
+    run_btn = st.button("🚀 Enhance Form & Run MoSSGA Analysis", use_container_width=True, type="primary")
 
 
 # ---------------------------------------------------------------------------
