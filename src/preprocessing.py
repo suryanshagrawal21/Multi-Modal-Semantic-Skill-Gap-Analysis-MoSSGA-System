@@ -7,9 +7,10 @@ import spacy
 try:
     nlp = spacy.load("en_core_web_sm")
 except OSError:
-    print("spaCy model 'en_core_web_sm' not found. "
-          "Run: python -m spacy download en_core_web_sm")
-    nlp = None
+    print("spaCy model 'en_core_web_sm' not found. Downloading dynamically...")
+    import spacy.cli
+    spacy.cli.download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
 
 # ---------------------------------------------------------------------------
