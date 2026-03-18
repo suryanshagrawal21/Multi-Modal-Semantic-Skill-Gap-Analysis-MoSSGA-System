@@ -5,6 +5,8 @@ Combines resume-extracted data with GitHub profile analysis into a
 unified candidate profile. Skills validated by both sources receive
 higher confidence scores.
 """
+from __future__ import annotations
+
 
 import logging
 from collections import defaultdict

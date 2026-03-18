@@ -5,6 +5,8 @@ Fetches a GitHub user's public repositories via the GitHub REST API
 and extracts programming languages, technologies, project complexity,
 and practical skills for multi-modal fusion with resume data.
 """
+from __future__ import annotations
+
 
 import logging
 import re

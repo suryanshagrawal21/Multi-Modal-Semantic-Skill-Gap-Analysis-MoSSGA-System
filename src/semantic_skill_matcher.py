@@ -5,6 +5,8 @@ Replaces keyword-only skill matching with SBERT-powered semantic matching.
 Resolves abbreviations/synonyms (e.g., "ML" ↔ "Machine Learning") and
 computes cosine similarity between candidate skills and JD requirements.
 """
+from __future__ import annotations
+
 
 import logging
 import re

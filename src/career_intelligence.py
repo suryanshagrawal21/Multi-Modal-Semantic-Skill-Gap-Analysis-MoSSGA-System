@@ -4,6 +4,8 @@ NeuroHire Career Intelligence Engine
 Provides job recommendations, skill gap analysis, learning roadmaps,
 career guidance, and structured JSON output for the NeuroHire system.
 """
+from __future__ import annotations
+
 
 import json
 import re
