@@ -130,5 +130,3 @@ python verify_mossga.py
 | **Data** | Pandas, PDFMiner, python-docx |
 | **API** | GitHub REST API v3 |
 
----
-*Developed by Suryansh Agrawal*
