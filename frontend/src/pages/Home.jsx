@@ -42,7 +42,9 @@ const Home = () => {
     });
 
     try {
-      const response = await axios.post('/api/analyze', data, {
+      // Use environment variable for production deployments (like Vercel to Render)
+      const baseUrl = import.meta.env.VITE_API_URL || '';
+      const response = await axios.post(`${baseUrl}/api/analyze`, data, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       navigate('/dashboard', { state: { report: response.data.data } });
