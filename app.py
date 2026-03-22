@@ -45,82 +45,81 @@ st.markdown("""
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
   .stApp {
-    background: linear-gradient(160deg, #0a0e17 0%, #111827 40%, #0f172a 100%);
+    background: #ffffff;
+    color: #000000;
     font-family: 'Inter', sans-serif;
   }
 
   /* Sidebar styling */
   section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #111827 0%, #1e293b 100%);
-    border-right: 1px solid rgba(99, 102, 241, 0.2);
+    background: #fafafa;
+    border-right: 1px solid #e5e7eb;
   }
   section[data-testid="stSidebar"] .stMarkdown h1,
   section[data-testid="stSidebar"] .stMarkdown h2,
   section[data-testid="stSidebar"] .stMarkdown h3 {
-    color: #818cf8 !important;
-    -webkit-text-fill-color: #818cf8 !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
     background: none !important;
-  }
-
-  /* Gradient Headers */
-  .main h1 {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
-    letter-spacing: -1px;
-    font-size: 2.8rem !important;
-  }
-  .main h2 {
-    background: linear-gradient(135deg, #60a5fa, #34d399);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-weight: 700;
   }
-  .main h3 {
-    background: linear-gradient(135deg, #c084fc, #f472b6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 600;
+  section[data-testid="stSidebar"] p, section[data-testid="stSidebar"] label {
+    color: #333333 !important;
   }
 
-  /* Glass cards */
+  /* Headings */
+  .main h1 {
+    color: #000000;
+    font-weight: 800;
+    letter-spacing: -1px;
+    font-size: 2.5rem !important;
+  }
+  .main h2, .main h3, .main h4 {
+    color: #000000;
+    font-weight: 700;
+  }
+
+  /* General Text */
+  .main p, .main span, .main div {
+    color: #1a1a1a;
+  }
+
+  /* Cards */
   .glass-card {
-    background: rgba(30, 41, 59, 0.7);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(99, 102, 241, 0.15);
-    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
     padding: 24px;
     margin: 12px 0;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: box-shadow 0.2s ease;
   }
   .glass-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 
   /* Mode badge */
   .mode-badge {
     display: inline-block;
     padding: 6px 16px;
-    border-radius: 20px;
+    border-radius: 4px;
     font-weight: 600;
     font-size: 0.85rem;
     letter-spacing: 0.5px;
     margin: 4px 0;
+    border: 1px solid #000000;
   }
-  .mode-full { background: linear-gradient(135deg, #059669, #10b981); color: white; }
-  .mode-partial { background: linear-gradient(135deg, #d97706, #f59e0b); color: white; }
-  .mode-guidance { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
+  .mode-full { background: #000000; color: #ffffff; }
+  .mode-partial { background: #ffffff; color: #000000; border-color: #000000; }
+  .mode-guidance { background: #f3f4f6; color: #000000; border-color: #d1d5db; }
 
   /* Status bar */
   .status-bar {
     display: flex;
     gap: 16px;
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    border-radius: 12px;
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
     padding: 12px 20px;
     margin: 16px 0;
     flex-wrap: wrap;
@@ -129,20 +128,15 @@ st.markdown("""
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.8rem;
-    color: #94a3b8;
+    font-size: 0.85rem;
+    color: #374151;
+    font-weight: 500;
   }
   .status-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #22c55e;
-    box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    background: #000000;
   }
 
   /* Score gauge */
@@ -154,88 +148,112 @@ st.markdown("""
     font-size: 2.5rem;
     font-weight: 800;
     line-height: 1;
+    color: #000000 !important;
   }
   .score-label {
-    font-size: 0.8rem;
-    color: #94a3b8;
+    font-size: 0.85rem;
+    color: #4b5563;
     margin-top: 4px;
+    font-weight: 600;
   }
-  .score-green { color: #22c55e; }
-  .score-yellow { color: #eab308; }
-  .score-red { color: #ef4444; }
 
   /* Roadmap steps */
   .roadmap-step {
-    background: rgba(30, 41, 59, 0.5);
-    border-left: 4px solid;
-    border-radius: 0 12px 12px 0;
+    background: #ffffff;
+    border-left: 4px solid #000000;
+    border-radius: 0 6px 6px 0;
     padding: 16px 20px;
     margin: 8px 0;
+    border-top: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
   }
-  .roadmap-beginner { border-color: #22c55e; }
-  .roadmap-intermediate { border-color: #eab308; }
-  .roadmap-advanced { border-color: #ef4444; }
+  .roadmap-beginner { border-left-color: #000000; }
+  .roadmap-intermediate { border-left-color: #666666; }
+  .roadmap-advanced { border-left-color: #cccccc; }
 
   /* Metric cards override */
   [data-testid="stMetric"] {
-    background: rgba(30, 41, 59, 0.6);
-    border: 1px solid rgba(99, 102, 241, 0.15);
-    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
     padding: 16px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   }
   [data-testid="stMetricValue"] {
-    color: #e2e8f0 !important;
+    color: #000000 !important;
+  }
+  [data-testid="stMetricLabel"] {
+    color: #4b5563 !important;
+    font-weight: 600 !important;
   }
 
   /* Tab styling */
   .stTabs [data-baseweb="tab-list"] {
     gap: 8px;
+    border-bottom: 2px solid #e5e7eb;
   }
   .stTabs [data-baseweb="tab"] {
-    background: rgba(30, 41, 59, 0.6);
-    border-radius: 8px 8px 0 0;
-    border: 1px solid rgba(99, 102, 241, 0.15);
-    color: #94a3b8;
+    background: transparent;
+    border: none;
+    color: #6b7280;
+    font-weight: 600;
   }
   .stTabs [aria-selected="true"] {
-    background: rgba(99, 102, 241, 0.2);
-    color: #a5b4fc;
+    background: transparent;
+    color: #000000;
+    border-bottom: 2px solid #000000;
   }
 
   /* Button styling */
   .stButton button[kind="primary"] {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    border: none;
-    color: white;
+    background: #000000;
+    border: 1px solid #000000;
+    color: #ffffff;
     font-weight: 600;
-    border-radius: 10px;
+    border-radius: 6px;
     padding: 12px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
   .stButton button[kind="primary"]:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+    background: #333333;
+    border-color: #333333;
+    color: #ffffff;
+  }
+  .stButton button[kind="secondary"] {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    color: #000000;
+    border-radius: 6px;
+  }
+  .stButton button[kind="secondary"]:hover {
+    border-color: #000000;
+    color: #000000;
   }
 
-  /* Input fields glassmorphism enhancements */
+  /* Input fields enhancements */
   .stTextInput input, .stTextArea textarea, [data-testid="stFileUploaderDropzone"] {
-    background: rgba(30, 41, 59, 0.5) !important;
-    border: 1px solid rgba(99, 102, 241, 0.25) !important;
-    border-radius: 10px !important;
-    color: #f8fafc !important;
-    transition: all 0.3s ease !important;
+    background: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    color: #000000 !important;
+    transition: all 0.2s ease !important;
   }
   .stTextInput input:focus, .stTextArea textarea:focus, [data-testid="stFileUploaderDropzone"]:hover {
-    background: rgba(15, 23, 42, 0.8) !important;
-    border-color: rgba(139, 92, 246, 0.8) !important;
-    box-shadow: 0 0 16px rgba(139, 92, 246, 0.3) !important;
+    border-color: #000000 !important;
+    box-shadow: 0 0 0 1px #000000 !important;
   }
   
   /* Enhance the label text under inputs */
   .stTextInput label, .stTextArea label, [data-testid="stFileUploaderDropzone"] label {
-    color: #94a3b8 !important;
-    font-weight: 500 !important;
+    color: #374151 !important;
+    font-weight: 600 !important;
   }
+
+  /* Remove score colors and make them black/gray */
+  .score-green { color: #000000; }
+  .score-yellow { color: #666666; }
+  .score-red { color: #999999; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -477,7 +495,7 @@ if run_btn:
       st.markdown(f"""
       <div class="score-gauge">
         <div class="score-value {score_color(mossga_score)}">{mossga_score}</div>
-        <div class="score-label">MoSSGA Score</div>
+        <div class="score-label">MoSSGA Hybrid Score</div>
       </div>""", unsafe_allow_html=True)
     with m2:
       match_pct = 0
@@ -763,7 +781,7 @@ if run_btn:
       sm4.markdown(f"""
       <div class="score-gauge">
         <div class="score-value {score_color(mossga_score)}">{mossga_score}</div>
-        <div class="score-label">MoSSGA Score</div>
+        <div class="score-label">Hybrid Score</div>
       </div>""", unsafe_allow_html=True)
 
       # Matched skills
@@ -787,9 +805,42 @@ if run_btn:
           </div>""", unsafe_allow_html=True)
 
       # Missing skills
+      explainable_insights = mossga_report.get("explainable_insights", [])
       missing_detailed = gap.get("missing_with_severity", [])
-      if missing_detailed:
-        st.markdown("### Missing Skills (by priority)")
+      
+      if explainable_insights:
+        st.markdown("### Explainable AI Insights (Missing Skills)")
+        for item in explainable_insights:
+          skill_name = item.get("skill", "")
+          insight = item.get("insight", "")
+          prereqs = item.get("missing_prerequisites", [])
+          
+          # Match with severity info
+          sev = "Medium"
+          importance = 0.5
+          for m in missing_detailed:
+              if m["skill"] == skill_name:
+                  sev = m["severity"]
+                  importance = m["importance"]
+                  break
+                  
+          sev_color = '#ef4444' if sev == 'Critical' else ('#eab308' if sev == 'Important' else '#94a3b8')
+          
+          prereq_html = ""
+          if prereqs:
+              prereq_html = f"<div style='margin-top:8px; font-size:0.85rem; color:#fca5a5;'><b>Graph Reasoning - Missing Prerequisites:</b> {', '.join([p.title() for p in prereqs])}</div>"
+
+          st.markdown(f"""
+          <div class="glass-card" style="padding:12px 16px; border-left: 4px solid {sev_color};">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <b style="color:#a5b4fc; font-size:1.1rem;">{skill_name.title()}</b>
+              <span style="color:{sev_color}; font-weight:600; font-size:0.85rem;">{sev} (Priority: {importance})</span>
+            </div>
+            <p style="color:#cbd5e1; font-size:0.95rem; margin-top:8px;"><i>🤖 {insight}</i></p>
+            {prereq_html}
+          </div>""", unsafe_allow_html=True)
+      elif missing_detailed:
+        st.markdown("### Missing Skills")
         for item in missing_detailed:
           sev = item["severity"]
           sev_color = '#ef4444' if sev == 'Critical' else ('#eab308' if sev == 'Important' else '#94a3b8')
@@ -868,8 +919,15 @@ if run_btn:
             <span style="font-size:0.85rem;"> {courses_html.rstrip(' · ')}</span>
           </div>""", unsafe_allow_html=True)
 
-      # Career steps
       career_steps = recs.get("career_steps", [])
+      career_path_data = mossga_report.get("career_path", {})
+      
+      if career_path_data.get("next_skills"):
+        st.markdown("### Workforce Informatics: Next Best Skills")
+        st.markdown("*AI-predicted logical next steps based on your current skill graph topology.*")
+        ns_html = " ".join([f'<span style="background:rgba(16,185,129,0.2); color:#6ee7b7; padding:6px 14px; border-radius:20px; border:1px solid rgba(16,185,129,0.4); margin:4px; display:inline-block;">{s.title()}</span>' for s in career_path_data["next_skills"]])
+        st.markdown(f"<div style='margin-bottom: 16px;'>{ns_html}</div>", unsafe_allow_html=True)
+      
       if career_steps:
         st.markdown("### Career Path Guidance")
         for step in career_steps:

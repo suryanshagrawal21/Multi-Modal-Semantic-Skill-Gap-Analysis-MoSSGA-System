@@ -34,6 +34,9 @@ from src.career_intelligence import (
     generate_career_guidance,
     generate_job_recommendations,
 )
+from src.hybrid_scorer import hybrid_scorer
+from src.explainability import explainability_engine
+from src.workforce_module import workforce_engine
 
 logger = logging.getLogger(__name__)
 
@@ -310,6 +313,9 @@ def run_mossga_pipeline(
         "fusion_summary": "",
         "semantic_match": None,
         "gap_analysis": None,
+        "hybrid_scoring": None,
+        "explainable_insights": None,
+        "career_path": None,
         "recommendations": None,
         "mossga_score": 0.0,
     }
@@ -378,11 +384,28 @@ def run_mossga_pipeline(
         gap_result = calculate_semantic_gap_score(match_result)
         report["gap_analysis"] = gap_result
 
-        # ── MoSSGA Score ────────────────────────────────────────
-        if report["fusion_result"]:
-            report["mossga_score"] = compute_weighted_skill_score(
-                report["fusion_result"], match_result
-            )
+        # ── Step 5.5: Hybrid Scoring ────────────────────────────
+        cand_skill_set = set(all_skills)
+        jd_skill_set = set(jd_skills)
+        hybrid_results = hybrid_scorer.compute_hybrid_score(cand_skill_set, jd_skill_set, match_result)
+        report["hybrid_scoring"] = hybrid_results
+        report["mossga_score"] = hybrid_results["hybrid_score"]
+        
+        # ── Step 5.6: Explainable AI Insights ───────────────────
+        insights = explainability_engine.generate_explanations(
+            gap_result.get("missing_with_severity", []), 
+            cand_skill_set, 
+            target_role or "Target Role"
+        )
+        report["explainable_insights"] = insights
+        
+        # ── Step 5.7: Workforce Informatics (Career Path) ───────
+        career_path = workforce_engine.predict_career_path(cand_skill_set, target_role)
+        progression = workforce_engine.model_skill_progression(list(jd_skill_set))
+        report["career_path"] = {
+            "next_skills": career_path,
+            "progression_model": progression
+        }
 
         # ── Step 6: Recommendations ─────────────────────────────
         recommendations = generate_mossga_recommendations(

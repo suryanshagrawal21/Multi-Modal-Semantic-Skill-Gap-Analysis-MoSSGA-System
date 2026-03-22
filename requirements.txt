@@ -8,3 +8,5 @@ plotly
 PyPDF2
 sentence-transformers
 requests
+networkx
+xgboost
